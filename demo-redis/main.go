@@ -17,13 +17,13 @@
 package main
 
 import (
-	"github.com/go-spring/app-starter"
 	_ "github.com/go-spring/demo-redis/example"
+	_ "github.com/go-spring/go-spring-boot-starter/starter-echo"
+	_ "github.com/go-spring/go-spring-boot-starter/starter-go-redis"
+	_ "github.com/go-spring/go-spring-boot-starter/starter-web"
 	"github.com/go-spring/go-spring-boot/spring-boot"
-	_ "github.com/go-spring/go-spring-boot-starter/spring-boot-starter-echo"
-	_ "github.com/go-spring/go-spring-boot-starter/spring-boot-starter-goredis"
 )
 
 func main() {
-	AppStarter.Run(SpringBoot.NewSpringBootApplication("config/"))
+	SpringBoot.RunApplication("config/")
 }

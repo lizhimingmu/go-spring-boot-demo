@@ -21,9 +21,9 @@ import (
 
 	"github.com/go-spring/app-starter"
 	"github.com/go-spring/demo-rpc-http/example"
-	"github.com/go-spring/go-spring-boot/spring-boot"
 	_ "github.com/go-spring/go-spring-boot-starter/starter-echo"
 	_ "github.com/go-spring/go-spring-boot-starter/starter-rpc-http"
+	"github.com/go-spring/go-spring-boot/spring-boot"
 )
 
 func main() {

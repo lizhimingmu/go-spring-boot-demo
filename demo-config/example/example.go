@@ -19,8 +19,8 @@ package example
 import (
 	"fmt"
 
-	"github.com/didi/go-spring/spring-core"
 	"github.com/go-spring/go-spring-boot/spring-boot"
+	"github.com/go-spring/go-spring/spring-core"
 )
 
 func init() {

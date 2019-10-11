@@ -19,8 +19,8 @@ package example
 import (
 	"fmt"
 
-	"github.com/didi/go-spring/spring-utils"
-	"github.com/didi/go-spring/spring-rpc-http"
+	"github.com/go-spring/go-spring/spring-rpc-http"
+	"github.com/go-spring/go-spring/spring-utils"
 )
 
 func RunTest() {

@@ -18,9 +18,9 @@ package main
 
 import (
 	_ "github.com/go-spring/demo-web/example"
-	"github.com/go-spring/go-spring-boot/spring-boot"
 	_ "github.com/go-spring/go-spring-boot-starter/starter-gin"
 	_ "github.com/go-spring/go-spring-boot-starter/starter-web"
+	"github.com/go-spring/go-spring-boot/spring-boot"
 )
 
 func main() {

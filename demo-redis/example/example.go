@@ -17,10 +17,10 @@
 package example
 
 import (
-	"github.com/didi/go-spring/spring-web"
-	"github.com/didi/go-spring/spring-core"
-	"github.com/didi/go-spring/spring-redis"
 	"github.com/go-spring/go-spring-boot/spring-boot"
+	"github.com/go-spring/go-spring/spring-core"
+	"github.com/go-spring/go-spring/spring-redis"
+	"github.com/go-spring/go-spring/spring-web"
 )
 
 func init() {
