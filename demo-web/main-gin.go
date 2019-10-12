@@ -17,12 +17,42 @@
 package main
 
 import (
+	"fmt"
+
+	"github.com/gin-gonic/gin"
 	_ "github.com/go-spring/demo-web/example"
 	_ "github.com/go-spring/go-spring-boot-starter/starter-gin"
 	_ "github.com/go-spring/go-spring-boot-starter/starter-web"
 	"github.com/go-spring/go-spring-boot/spring-boot"
+	"github.com/go-spring/go-spring/spring-core"
+	"github.com/go-spring/go-spring/spring-gin"
 )
 
+//
+// 注册 gin 容器
+//
+func registerGinContainer() {
+	SpringBoot.RegisterModule(func(ctx SpringCore.SpringContext) {
+		gin.SetMode(gin.ReleaseMode)
+
+		e := gin.Default()
+
+		e.Use(func(ginCtx *gin.Context) {
+			fmt.Println("use registerGinContainer()")
+			ginCtx.Next()
+		})
+
+		c := &SpringGin.Container{
+			GinEngine: e,
+		}
+
+		ctx.RegisterNameBean("WebContainer", c)
+	})
+}
+
 func main() {
+	if false {
+		registerGinContainer()
+	}
 	SpringBoot.RunApplication("config/")
 }
