@@ -19,6 +19,7 @@ package example
 import (
 	"net/http"
 
+	"github.com/go-spring/demo-web/filter"
 	"github.com/go-spring/go-spring-boot/spring-boot"
 	"github.com/go-spring/go-spring/spring-core"
 	"github.com/go-spring/go-spring/spring-web"
@@ -33,10 +34,24 @@ func init() {
 type Controller struct {
 }
 
-func (controller *Controller) InitWebBean(c SpringWeb.WebContainer) {
-	c.GET("/", controller.Home)
+func (controller *Controller) InitWebBean(c SpringWeb.WebContainer, ctx SpringCore.SpringContext) {
+
+	f1, _ := ctx.FindBeanByName("f1").(*filter.NumberFilter)
+	f2, _ := ctx.FindBeanByName("f2").(*filter.NumberFilter)
+
+	c.GET("/", controller.Home, f2)
+	c.GET("/f1f2", controller.F1F2, f1, f2)
+	c.GET("/f2f1", controller.F2F1, f2, f1)
 }
 
 func (controller *Controller) Home(ctx SpringWeb.WebContext) {
 	ctx.String(http.StatusOK, "OK!")
+}
+
+func (controller *Controller) F1F2(ctx SpringWeb.WebContext) {
+	ctx.String(http.StatusOK, "f1f2!")
+}
+
+func (controller *Controller) F2F1(ctx SpringWeb.WebContext) {
+	ctx.String(http.StatusOK, "f2f1!")
 }
