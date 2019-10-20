@@ -20,9 +20,9 @@ import (
 	"os"
 	"time"
 
-	"github.com/go-spring/app-starter"
 	_ "github.com/go-spring/demo-config/example"
-	"github.com/go-spring/go-spring-boot/spring-boot"
+	"github.com/go-spring/go-spring/boot-starter"
+	"github.com/go-spring/go-spring/spring-boot"
 )
 
 func init() {
@@ -32,7 +32,7 @@ func init() {
 func main() {
 	go func() {
 		time.Sleep(time.Millisecond * 50)
-		AppStarter.Exit()
+		BootStarter.Exit()
 	}()
 	//SpringBoot.RunApplication("./")
 	SpringBoot.RunApplication("config/")

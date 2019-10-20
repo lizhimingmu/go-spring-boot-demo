@@ -19,7 +19,7 @@ package example
 import (
 	"fmt"
 
-	"github.com/go-spring/go-spring-boot/spring-boot"
+	"github.com/go-spring/go-spring/spring-boot"
 	"github.com/go-spring/go-spring/spring-core"
 )
 

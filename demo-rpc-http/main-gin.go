@@ -19,18 +19,18 @@ package main
 import (
 	"time"
 
-	"github.com/go-spring/app-starter"
 	"github.com/go-spring/demo-rpc-http/example"
 	_ "github.com/go-spring/go-spring-boot-starter/starter-gin"
 	_ "github.com/go-spring/go-spring-boot-starter/starter-rpc-http"
-	"github.com/go-spring/go-spring-boot/spring-boot"
+	"github.com/go-spring/go-spring/boot-starter"
+	"github.com/go-spring/go-spring/spring-boot"
 )
 
 func main() {
 	go func() {
 		time.Sleep(time.Millisecond * 200)
 		example.RunTest()
-		AppStarter.Exit()
+		BootStarter.Exit()
 	}()
 	SpringBoot.RunApplication("config/")
 }

@@ -21,7 +21,7 @@ import (
 	_ "github.com/go-spring/go-spring-boot-starter/starter-echo"
 	_ "github.com/go-spring/go-spring-boot-starter/starter-go-redis"
 	_ "github.com/go-spring/go-spring-boot-starter/starter-web"
-	"github.com/go-spring/go-spring-boot/spring-boot"
+	"github.com/go-spring/go-spring/spring-boot"
 )
 
 func main() {

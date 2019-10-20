@@ -21,9 +21,10 @@ import (
 
 	"github.com/gin-gonic/gin"
 	_ "github.com/go-spring/demo-web/example"
+	_ "github.com/go-spring/demo-web/filter"
 	_ "github.com/go-spring/go-spring-boot-starter/starter-gin"
 	_ "github.com/go-spring/go-spring-boot-starter/starter-web"
-	"github.com/go-spring/go-spring-boot/spring-boot"
+	"github.com/go-spring/go-spring/spring-boot"
 	"github.com/go-spring/go-spring/spring-core"
 	"github.com/go-spring/go-spring/spring-gin"
 )
@@ -51,7 +52,7 @@ func registerGinContainer() {
 }
 
 func main() {
-	if false {
+	if true {
 		registerGinContainer()
 	}
 	SpringBoot.RunApplication("config/")

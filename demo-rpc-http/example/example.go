@@ -20,7 +20,7 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/go-spring/go-spring-boot/spring-boot"
+	"github.com/go-spring/go-spring/spring-boot"
 	"github.com/go-spring/go-spring/spring-core"
 	"github.com/go-spring/go-spring/spring-rpc"
 	"github.com/go-spring/go-spring/spring-utils"
@@ -35,10 +35,10 @@ func init() {
 type Controller struct {
 }
 
-func (controller *Controller) InitRpcBean(c SpringRpc.RpcContainer) {
-	c.Register("store", "get", controller.StoreGet)
-	c.Register("store", "set", controller.StoreSet)
-	c.Register("store", "panic", controller.StorePanic)
+func (c *Controller) InitRpcBean(wc SpringRpc.RpcContainer) {
+	wc.Register("store", "get", c.StoreGet)
+	wc.Register("store", "set", c.StoreSet)
+	wc.Register("store", "panic", c.StorePanic)
 }
 
 var store = make(map[string]string)
@@ -47,7 +47,7 @@ type GetReq struct {
 	Key string `form:"key" json:"key"`
 }
 
-func (controller *Controller) StoreGet(ctx SpringRpc.RpcContext) interface{} {
+func (c *Controller) StoreGet(ctx SpringRpc.RpcContext) interface{} {
 
 	var param GetReq
 	ctx.Bind(&param)
@@ -61,7 +61,7 @@ func (controller *Controller) StoreGet(ctx SpringRpc.RpcContext) interface{} {
 
 type SetReq map[string]string
 
-func (controller *Controller) StoreSet(ctx SpringRpc.RpcContext) interface{} {
+func (c *Controller) StoreSet(ctx SpringRpc.RpcContext) interface{} {
 
 	var param SetReq
 	ctx.Bind(&param)
@@ -74,7 +74,7 @@ func (controller *Controller) StoreSet(ctx SpringRpc.RpcContext) interface{} {
 	return "ok"
 }
 
-func (controller *Controller) StorePanic(ctx SpringRpc.RpcContext) interface{} {
+func (c *Controller) StorePanic(ctx SpringRpc.RpcContext) interface{} {
 
 	err := errors.New("this is a panic")
 	SpringRpc.ERROR.Panic(err).When(err != nil)

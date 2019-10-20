@@ -19,8 +19,7 @@ package example
 import (
 	"net/http"
 
-	"github.com/go-spring/demo-web/filter"
-	"github.com/go-spring/go-spring-boot/spring-boot"
+	"github.com/go-spring/go-spring/spring-boot"
 	"github.com/go-spring/go-spring/spring-core"
 	"github.com/go-spring/go-spring/spring-web"
 )
@@ -34,24 +33,27 @@ func init() {
 type Controller struct {
 }
 
-func (controller *Controller) InitWebBean(c SpringWeb.WebContainer, ctx SpringCore.SpringContext) {
+func (c *Controller) InitWebBean(wc SpringWeb.WebContainer, ctx SpringCore.SpringContext) {
 
-	f1, _ := ctx.FindBeanByName("f1").(*filter.NumberFilter)
-	f2, _ := ctx.FindBeanByName("f2").(*filter.NumberFilter)
+	var f1 SpringWeb.Filter
+	ctx.GetBeanByName("f1", &f1)
 
-	c.GET("/", controller.Home, f2)
-	c.GET("/f1f2", controller.F1F2, f1, f2)
-	c.GET("/f2f1", controller.F2F1, f2, f1)
+	var f2 SpringWeb.Filter
+	ctx.GetBeanByName("f2", &f2)
+
+	wc.GET("/", c.Home, f2)
+	wc.GET("/f1f2", c.F1F2, f1, f2)
+	wc.GET("/f2f1", c.F2F1, f2, f1)
 }
 
-func (controller *Controller) Home(ctx SpringWeb.WebContext) {
+func (c *Controller) Home(ctx SpringWeb.WebContext) {
 	ctx.String(http.StatusOK, "OK!")
 }
 
-func (controller *Controller) F1F2(ctx SpringWeb.WebContext) {
+func (c *Controller) F1F2(ctx SpringWeb.WebContext) {
 	ctx.String(http.StatusOK, "f1f2!")
 }
 
-func (controller *Controller) F2F1(ctx SpringWeb.WebContext) {
+func (c *Controller) F2F1(ctx SpringWeb.WebContext) {
 	ctx.String(http.StatusOK, "f2f1!")
 }
