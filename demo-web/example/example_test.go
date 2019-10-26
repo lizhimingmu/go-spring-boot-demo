@@ -23,6 +23,7 @@ import (
 	"time"
 
 	_ "github.com/go-spring/demo-web/example"
+	_ "github.com/go-spring/demo-web/filter"
 	_ "github.com/go-spring/go-spring-boot-starter/starter-echo"
 	_ "github.com/go-spring/go-spring-boot-starter/starter-web"
 	"github.com/go-spring/go-spring/spring-boot"

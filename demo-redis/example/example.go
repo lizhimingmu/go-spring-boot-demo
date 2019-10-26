@@ -17,12 +17,9 @@
 package example
 
 import (
-	"net/http"
-
+	"github.com/go-spring/go-spring-web/spring-web"
 	"github.com/go-spring/go-spring/spring-boot"
 	"github.com/go-spring/go-spring/spring-core"
-	"github.com/go-spring/go-spring/spring-redis"
-	"github.com/go-spring/go-spring/spring-web"
 )
 
 func init() {
@@ -32,26 +29,26 @@ func init() {
 }
 
 type RedisController struct {
-	RedisTemplate SpringRedis.RedisTemplate `autowire:""`
+	//RedisTemplate SpringRedis.RedisTemplate `autowire:""`
 }
 
-func (c *RedisController) InitWebBean(wc SpringWeb.WebContainer, ctx SpringCore.SpringContext) {
+func (c *RedisController) InitWebBean(wc SpringWeb.WebContainer) {
 	wc.GET("/get", c.Get)
 	wc.POST("/set", c.Set)
 }
 
 func (c *RedisController) Get(ctx SpringWeb.WebContext) {
-	key := ctx.FormValue("key")
-	val, err := c.RedisTemplate.Get(ctx, key)
-	if err != nil {
-		ctx.Error(err)
-	}
-	ctx.JSON(http.StatusOK, val)
+	//key := ctx.FormValue("key")
+	//val, err := c.RedisTemplate.Get(ctx, key)
+	//if err != nil {
+	//	ctx.Error(err)
+	//}
+	//ctx.JSON(http.StatusOK, val)
 }
 
 func (c *RedisController) Set(ctx SpringWeb.WebContext) {
-	key := ctx.FormValue("key")
-	val := ctx.FormValue("val")
-	c.RedisTemplate.Set(ctx, key, val)
-	ctx.NoContent(http.StatusOK)
+	//key := ctx.FormValue("key")
+	//val := ctx.FormValue("val")
+	//c.RedisTemplate.Set(ctx, key, val)
+	//ctx.NoContent(http.StatusOK)
 }

@@ -19,8 +19,8 @@ package example
 import (
 	"fmt"
 
-	"github.com/go-spring/go-spring/spring-rpc-http"
-	"github.com/go-spring/go-spring/spring-utils"
+	"github.com/go-spring/go-spring-parent/spring-utils"
+	"github.com/go-spring/go-spring-rpc/spring-rpc-http"
 )
 
 func RunTest() {
@@ -28,17 +28,17 @@ func RunTest() {
 	var respGet string
 	reqGet := &GetReq{Key: "a"}
 	err := SpringHttpRpc.CallService("store", "get", reqGet, &respGet)
-	fmt.Println("err:", SpringUtils.String(err), "||", "resp:", respGet)
+	fmt.Println("err:", SpringUtils.ToString(err), "||", "resp:", respGet)
 
 	var respSet string
 	reqSet := &SetReq{"a": "1"}
 	err = SpringHttpRpc.CallService("store", "set", reqSet, &respSet)
-	fmt.Println("err:", SpringUtils.String(err), "||", "resp:", respSet)
+	fmt.Println("err:", SpringUtils.ToString(err), "||", "resp:", respSet)
 
 	err = SpringHttpRpc.CallService("store", "get", reqGet, &respGet)
-	fmt.Println("err:", SpringUtils.String(err), "||", "resp:", respGet)
+	fmt.Println("err:", SpringUtils.ToString(err), "||", "resp:", respGet)
 
 	var respPanic string
 	err = SpringHttpRpc.CallService("store", "panic", nil, &respPanic)
-	fmt.Println("err:", SpringUtils.String(err), "||", "resp:", respPanic)
+	fmt.Println("err:", SpringUtils.ToString(err), "||", "resp:", respPanic)
 }

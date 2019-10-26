@@ -24,9 +24,9 @@ import (
 	_ "github.com/go-spring/demo-web/filter"
 	_ "github.com/go-spring/go-spring-boot-starter/starter-gin"
 	_ "github.com/go-spring/go-spring-boot-starter/starter-web"
+	"github.com/go-spring/go-spring-web/spring-gin"
 	"github.com/go-spring/go-spring/spring-boot"
 	"github.com/go-spring/go-spring/spring-core"
-	"github.com/go-spring/go-spring/spring-gin"
 )
 
 //

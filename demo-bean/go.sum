@@ -26,10 +26,8 @@ github.com/go-kit/kit v0.8.0/go.mod h1:xBxKIO96dXMWWy0MnWVtmwkA9/13aqxPnvrjFYMA2
 github.com/go-logfmt/logfmt v0.3.0/go.mod h1:Qt1PoO58o5twSAckw1HlFXLmHsOX5/0LbT9GBnD5lWE=
 github.com/go-logfmt/logfmt v0.4.0/go.mod h1:3RMwSq7FuexP4Kalkev3ejPJsZTpXXBr9+V4qmtdjCk=
 github.com/go-redis/redis v6.15.5+incompatible/go.mod h1:NAIEuMOZ/fxfXJIrKDQDz8wamY7mA7PouImQ2Jvg6kA=
-github.com/go-spring/go-spring v0.0.0-20191019094440-c065e5756ed3 h1:3epmWTw26pt7I0qEP898UMWfer7ibhIBSKAUHhG/vRM=
-github.com/go-spring/go-spring v0.0.0-20191019094440-c065e5756ed3/go.mod h1:i00W8o/A4BzkTWXXXjApyoOSm9qIqktS0GepWOjNcWs=
-github.com/go-spring/go-spring v0.0.0-20191019151432-4f61c879bd65/go.mod h1:i00W8o/A4BzkTWXXXjApyoOSm9qIqktS0GepWOjNcWs=
-github.com/go-spring/go-spring-boot-starter v0.0.0-20191020013432-080a6817cd8c/go.mod h1:hJDIYIOeM5G+mtFf7+luVXii+f2Oyn0wMHES4aE/8aY=
+github.com/go-spring/go-spring v0.0.0-20191025150939-555af1956867 h1:cLIp5vasP5mhkzSu1473l/W7frM89lpeqLXA0Wd0vhk=
+github.com/go-spring/go-spring v0.0.0-20191025150939-555af1956867/go.mod h1:i00W8o/A4BzkTWXXXjApyoOSm9qIqktS0GepWOjNcWs=
 github.com/go-stack/stack v1.8.0/go.mod h1:v0f6uXyyMGvRgIKkXu+yp6POWl0qKG85gN/melR3HDY=
 github.com/gogo/protobuf v1.1.1/go.mod h1:r8qH/GZQm5c6nD/R0oafs1akxWv10x8SbQlK7atdtwQ=
 github.com/gogo/protobuf v1.2.1/go.mod h1:hp+jE20tsWTFYpLwKvXlhS1hjn+gTNwPg2I6zVXpSg4=
