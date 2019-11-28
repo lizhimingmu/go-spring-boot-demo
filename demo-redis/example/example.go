@@ -19,13 +19,10 @@ package example
 import (
 	"github.com/go-spring/go-spring-web/spring-web"
 	"github.com/go-spring/go-spring/spring-boot"
-	"github.com/go-spring/go-spring/spring-core"
 )
 
 func init() {
-	SpringBoot.RegisterModule(func(springContext SpringCore.SpringContext) {
-		springContext.RegisterBean(new(RedisController))
-	})
+	SpringBoot.RegisterBean(new(RedisController))
 }
 
 type RedisController struct {

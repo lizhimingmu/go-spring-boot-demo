@@ -26,29 +26,26 @@ import (
 	_ "github.com/go-spring/go-spring-boot-starter/starter-web"
 	"github.com/go-spring/go-spring-web/spring-gin"
 	"github.com/go-spring/go-spring/spring-boot"
-	"github.com/go-spring/go-spring/spring-core"
 )
 
 //
 // 注册 gin 容器
 //
 func registerGinContainer() {
-	SpringBoot.RegisterModule(func(ctx SpringCore.SpringContext) {
-		gin.SetMode(gin.ReleaseMode)
+	gin.SetMode(gin.ReleaseMode)
 
-		e := gin.Default()
+	e := gin.Default()
 
-		e.Use(func(ginCtx *gin.Context) {
-			fmt.Println("use registerGinContainer()")
-			ginCtx.Next()
-		})
-
-		c := &SpringGin.Container{
-			GinEngine: e,
-		}
-
-		ctx.RegisterNameBean("WebContainer", c)
+	e.Use(func(ginCtx *gin.Context) {
+		fmt.Println("use registerGinContainer()")
+		ginCtx.Next()
 	})
+
+	c := &SpringGin.Container{
+		GinEngine: e,
+	}
+
+	SpringBoot.RegisterNameBean("WebContainer", c)
 }
 
 func main() {

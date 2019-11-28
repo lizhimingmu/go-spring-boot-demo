@@ -25,7 +25,6 @@ import (
 	_ "github.com/go-spring/go-spring-boot-starter/starter-web"
 	"github.com/go-spring/go-spring-web/spring-echo"
 	"github.com/go-spring/go-spring/spring-boot"
-	"github.com/go-spring/go-spring/spring-core"
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
 )
@@ -34,25 +33,23 @@ import (
 // 注册 echo 容器
 //
 func registerEchoContainer() {
-	SpringBoot.RegisterModule(func(ctx SpringCore.SpringContext) {
 
-		e := echo.New()
-		e.HideBanner = true
-		e.Use(middleware.Recover())
+	e := echo.New()
+	e.HideBanner = true
+	e.Use(middleware.Recover())
 
-		e.Use(func(next echo.HandlerFunc) echo.HandlerFunc {
-			return func(c echo.Context) error {
-				fmt.Println("use registerEchoContainer()")
-				return next(c)
-			}
-		})
-
-		c := &SpringEcho.Container{
-			EchoServer: e,
+	e.Use(func(next echo.HandlerFunc) echo.HandlerFunc {
+		return func(c echo.Context) error {
+			fmt.Println("use registerEchoContainer()")
+			return next(c)
 		}
-
-		ctx.RegisterNameBean("WebContainer", c)
 	})
+
+	c := &SpringEcho.Container{
+		EchoServer: e,
+	}
+
+	SpringBoot.RegisterNameBean("WebContainer", c)
 }
 
 func main() {

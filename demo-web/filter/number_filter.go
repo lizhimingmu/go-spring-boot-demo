@@ -5,14 +5,11 @@ import (
 
 	"github.com/go-spring/go-spring-web/spring-web"
 	"github.com/go-spring/go-spring/spring-boot"
-	"github.com/go-spring/go-spring/spring-core"
 )
 
 func init() {
-	SpringBoot.RegisterModule(func(ctx SpringCore.SpringContext) {
-		ctx.RegisterNameBean("f1", NewNumberFilter(1))
-		ctx.RegisterNameBean("f2", NewNumberFilter(2))
-	})
+	SpringBoot.RegisterNameBean("f1", NewNumberFilter(1))
+	SpringBoot.RegisterNameBean("f2", NewNumberFilter(2))
 }
 
 type NumberFilter struct {

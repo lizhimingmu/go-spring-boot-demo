@@ -24,9 +24,7 @@ import (
 )
 
 func init() {
-	SpringBoot.RegisterModule(func(ctx SpringCore.SpringContext) {
-		ctx.RegisterBean(new(TestBean))
-	})
+	SpringBoot.RegisterBean(new(TestBean))
 }
 
 type TestBean struct {

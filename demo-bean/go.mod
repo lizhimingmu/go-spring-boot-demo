@@ -1,3 +1,3 @@
 module github.com/go-spring/demo-bean
 
-require github.com/go-spring/go-spring v0.0.0-20191025150939-555af1956867
+require github.com/go-spring/go-spring v1.0.0-alpha.0.20191127163122-29ef9f2b0243

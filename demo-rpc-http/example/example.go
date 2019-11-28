@@ -20,16 +20,14 @@ import (
 	"errors"
 	"fmt"
 
+	"github.com/go-spring/go-spring-parent/spring-error"
 	"github.com/go-spring/go-spring-parent/spring-utils"
 	"github.com/go-spring/go-spring-rpc/spring-rpc"
 	"github.com/go-spring/go-spring/spring-boot"
-	"github.com/go-spring/go-spring/spring-core"
 )
 
 func init() {
-	SpringBoot.RegisterModule(func(ctx SpringCore.SpringContext) {
-		ctx.RegisterBean(new(Controller))
-	})
+	SpringBoot.RegisterBean(new(Controller))
 }
 
 type Controller struct {
@@ -77,7 +75,7 @@ func (c *Controller) StoreSet(ctx SpringRpc.RpcContext) interface{} {
 func (c *Controller) StorePanic(ctx SpringRpc.RpcContext) interface{} {
 
 	err := errors.New("this is a panic")
-	SpringRpc.ERROR.Panic(err).When(err != nil)
+	SpringError.ERROR.Panic(err).When(err != nil)
 
 	return "success"
 }

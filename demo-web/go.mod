@@ -2,8 +2,8 @@ module github.com/go-spring/demo-web
 
 require (
 	github.com/gin-gonic/gin v1.4.0
-	github.com/go-spring/go-spring v0.0.0-20191025150939-555af1956867
-	github.com/go-spring/go-spring-boot-starter v0.0.0-20191026035740-3207e62eb7e6
-	github.com/go-spring/go-spring-web v0.0.0-20191026035037-291795b7d4ce
+	github.com/go-spring/go-spring v1.0.0-alpha.0.20191127163122-29ef9f2b0243
+	github.com/go-spring/go-spring-boot-starter v0.0.0-20191128041902-a435995ffd43
+	github.com/go-spring/go-spring-web v0.0.0-20191125062010-f1c9456593de
 	github.com/labstack/echo v3.3.10+incompatible
 )
