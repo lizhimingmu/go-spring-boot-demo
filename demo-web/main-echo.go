@@ -24,6 +24,7 @@ import (
 	_ "github.com/go-spring/go-spring-boot-starter/starter-echo"
 	_ "github.com/go-spring/go-spring-boot-starter/starter-web"
 	"github.com/go-spring/go-spring-web/spring-echo"
+	"github.com/go-spring/go-spring-web/spring-web"
 	"github.com/go-spring/go-spring/spring-boot"
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
@@ -35,7 +36,7 @@ import (
 func registerEchoContainer() {
 
 	e := echo.New()
-	e.HideBanner = true
+	//e.HideBanner = true
 	e.Use(middleware.Recover())
 
 	e.Use(func(next echo.HandlerFunc) echo.HandlerFunc {
@@ -46,14 +47,18 @@ func registerEchoContainer() {
 	})
 
 	c := &SpringEcho.Container{
-		EchoServer: e,
+		EchoServers: []*echo.Echo{e},
 	}
+	c.BaseWebContainer.Init()
+	c.SetPort(8080)
 
-	SpringBoot.RegisterNameBean("WebContainer", c)
+	webServer := SpringWeb.NewWebServer()
+	webServer.AddWebContainer(c)
+	SpringBoot.RegisterBean(webServer)
 }
 
 func main() {
-	if false {
+	if true {
 		registerEchoContainer()
 	}
 	SpringBoot.RunApplication("config/")
