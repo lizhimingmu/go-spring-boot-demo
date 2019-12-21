@@ -24,16 +24,14 @@ import (
 )
 
 func init() {
-	SpringBoot.RegisterBean(new(Controller))
+	SpringBoot.RegisterBean(new(Controller)).InitFunc(func(c *Controller) {
+		SpringBoot.GetMapping("/", c.Home).SetFilterNames("f2")
+		SpringBoot.GetMapping("/f1f2", c.F1F2).SetFilterNames("f1", "f2")
+		SpringBoot.GetMapping("/f2f1", c.F2F1).SetFilterNames("f2", "f1")
+	})
 }
 
 type Controller struct {
-}
-
-func (c *Controller) InitWebBean(wc SpringWeb.WebContainer) {
-	wc.GET("/", c.Home, wc.Filters("f2")...)
-	wc.GET("/f1f2", c.F1F2, wc.Filters("f1", "f2")...)
-	wc.GET("/f2f1", c.F2F1, wc.Filters("f2", "f1")...)
 }
 
 func (c *Controller) Home(ctx SpringWeb.WebContext) {

@@ -22,10 +22,11 @@ import (
 	"github.com/gin-gonic/gin"
 	_ "github.com/go-spring/demo-web/example"
 	_ "github.com/go-spring/demo-web/filter"
-	_ "github.com/go-spring/go-spring-boot-starter/starter-gin"
-	_ "github.com/go-spring/go-spring-boot-starter/starter-web"
 	"github.com/go-spring/go-spring-web/spring-gin"
+	"github.com/go-spring/go-spring-web/spring-web"
 	"github.com/go-spring/go-spring/spring-boot"
+	_ "github.com/go-spring/go-spring/starter-gin"
+	_ "github.com/go-spring/go-spring/starter-web"
 )
 
 //
@@ -41,11 +42,14 @@ func registerGinContainer() {
 		ginCtx.Next()
 	})
 
-	c := &SpringGin.Container{
-		GinEngine: e,
-	}
+	c := &SpringGin.Container{}
+	c.BaseWebContainer.Init()
+	c.SetPort(8080)
 
-	SpringBoot.RegisterNameBean("WebContainer", c)
+	webServer := SpringWeb.NewWebServer()
+	webServer.AddWebContainer(c)
+
+	SpringBoot.RegisterBean(webServer)
 }
 
 func main() {

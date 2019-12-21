@@ -21,11 +21,11 @@ import (
 
 	_ "github.com/go-spring/demo-web/example"
 	_ "github.com/go-spring/demo-web/filter"
-	_ "github.com/go-spring/go-spring-boot-starter/starter-echo"
-	_ "github.com/go-spring/go-spring-boot-starter/starter-web"
 	"github.com/go-spring/go-spring-web/spring-echo"
 	"github.com/go-spring/go-spring-web/spring-web"
 	"github.com/go-spring/go-spring/spring-boot"
+	_ "github.com/go-spring/go-spring/starter-echo"
+	_ "github.com/go-spring/go-spring/starter-web"
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
 )
@@ -54,6 +54,7 @@ func registerEchoContainer() {
 
 	webServer := SpringWeb.NewWebServer()
 	webServer.AddWebContainer(c)
+
 	SpringBoot.RegisterBean(webServer)
 }
 
