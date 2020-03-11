@@ -18,12 +18,13 @@ package main
 
 import (
 	_ "github.com/go-spring/demo-redis/example"
-	_ "github.com/go-spring/go-spring-boot-starter/starter-echo"
-	//_ "github.com/go-spring/go-spring-boot-starter/starter-go-redis"
-	_ "github.com/go-spring/go-spring-boot-starter/starter-web"
+	"github.com/go-spring/go-spring-parent/spring-logger"
 	"github.com/go-spring/go-spring/spring-boot"
+	_ "github.com/go-spring/go-spring/starter-echo"
+	_ "github.com/go-spring/go-spring/starter-go-redis"
 )
 
 func main() {
+	SpringLogger.SetLogger(&SpringLogger.Console{})
 	SpringBoot.RunApplication("config/")
 }

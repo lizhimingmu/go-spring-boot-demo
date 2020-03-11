@@ -22,16 +22,14 @@ import (
 	"github.com/gin-gonic/gin"
 	_ "github.com/go-spring/demo-web/example"
 	_ "github.com/go-spring/demo-web/filter"
+	"github.com/go-spring/go-spring-parent/spring-logger"
 	"github.com/go-spring/go-spring-web/spring-gin"
 	"github.com/go-spring/go-spring-web/spring-web"
 	"github.com/go-spring/go-spring/spring-boot"
 	_ "github.com/go-spring/go-spring/starter-gin"
-	_ "github.com/go-spring/go-spring/starter-web"
 )
 
-//
 // 注册 gin 容器
-//
 func registerGinContainer() {
 	gin.SetMode(gin.ReleaseMode)
 
@@ -42,8 +40,7 @@ func registerGinContainer() {
 		ginCtx.Next()
 	})
 
-	c := &SpringGin.Container{}
-	c.BaseWebContainer.Init()
+	c := SpringGin.NewContainer()
 	c.SetPort(8080)
 
 	webServer := SpringWeb.NewWebServer()
@@ -53,7 +50,8 @@ func registerGinContainer() {
 }
 
 func main() {
-	if true {
+	SpringLogger.SetLogger(&SpringLogger.Console{})
+	if false {
 		registerGinContainer()
 	}
 	SpringBoot.RunApplication("config/")

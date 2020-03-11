@@ -24,7 +24,7 @@ import (
 )
 
 func init() {
-	SpringBoot.RegisterBean(new(Controller)).InitFunc(func(c *Controller) {
+	SpringBoot.RegisterBean(new(Controller)).Init(func(c *Controller) {
 		SpringBoot.GetMapping("/", c.Home).SetFilterNames("f2")
 		SpringBoot.GetMapping("/f1f2", c.F1F2).SetFilterNames("f1", "f2")
 		SpringBoot.GetMapping("/f2f1", c.F2F1).SetFilterNames("f2", "f1")

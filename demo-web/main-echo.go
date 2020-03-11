@@ -21,18 +21,16 @@ import (
 
 	_ "github.com/go-spring/demo-web/example"
 	_ "github.com/go-spring/demo-web/filter"
+	"github.com/go-spring/go-spring-parent/spring-logger"
 	"github.com/go-spring/go-spring-web/spring-echo"
 	"github.com/go-spring/go-spring-web/spring-web"
 	"github.com/go-spring/go-spring/spring-boot"
 	_ "github.com/go-spring/go-spring/starter-echo"
-	_ "github.com/go-spring/go-spring/starter-web"
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
 )
 
-//
 // 注册 echo 容器
-//
 func registerEchoContainer() {
 
 	e := echo.New()
@@ -46,10 +44,8 @@ func registerEchoContainer() {
 		}
 	})
 
-	c := &SpringEcho.Container{
-		EchoServers: []*echo.Echo{e},
-	}
-	c.BaseWebContainer.Init()
+	c := SpringEcho.NewContainer()
+	c.SetEchoServer(e)
 	c.SetPort(8080)
 
 	webServer := SpringWeb.NewWebServer()
@@ -59,7 +55,8 @@ func registerEchoContainer() {
 }
 
 func main() {
-	if true {
+	SpringLogger.SetLogger(&SpringLogger.Console{})
+	if false {
 		registerEchoContainer()
 	}
 	SpringBoot.RunApplication("config/")

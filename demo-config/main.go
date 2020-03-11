@@ -21,6 +21,7 @@ import (
 	"time"
 
 	_ "github.com/go-spring/demo-config/example"
+	"github.com/go-spring/go-spring-parent/spring-logger"
 	"github.com/go-spring/go-spring/boot-starter"
 	"github.com/go-spring/go-spring/spring-boot"
 )
@@ -30,6 +31,7 @@ func init() {
 }
 
 func main() {
+	SpringLogger.SetLogger(&SpringLogger.Console{})
 	go func() {
 		time.Sleep(time.Millisecond * 50)
 		BootStarter.Exit()

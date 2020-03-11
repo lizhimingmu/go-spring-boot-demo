@@ -6,3 +6,5 @@ require (
 	github.com/go-spring/go-spring-parent v1.0.0-alpha.0.20191103024245-cc7dade252d5
 	github.com/go-spring/go-spring-rpc v0.0.0-20191103025618-861f0d3e2089
 )
+
+go 1.12

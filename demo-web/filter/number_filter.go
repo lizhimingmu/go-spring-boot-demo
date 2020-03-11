@@ -8,8 +8,12 @@ import (
 )
 
 func init() {
-	SpringBoot.RegisterNameBean("f1", NewNumberFilter(1))
-	SpringBoot.RegisterNameBean("f2", NewNumberFilter(2))
+
+	SpringBoot.RegisterNameBean("f1", NewNumberFilter(1)).
+		AsInterface((*SpringWeb.Filter)(nil))
+
+	SpringBoot.RegisterNameBean("f2", NewNumberFilter(2)).
+		AsInterface((*SpringWeb.Filter)(nil))
 }
 
 type NumberFilter struct {
